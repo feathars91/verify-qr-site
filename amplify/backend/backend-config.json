@@ -1,0 +1,17 @@
+{
+  "auth": {
+    "verifyqrsite388b96f0": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "service": "amplifyhosting",
+      "type": "cicd",
+      "lastPushTimeStamp": "2021-09-14T16:33:26.632Z"
+    }
+  }
+}
