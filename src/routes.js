@@ -1,5 +1,6 @@
 // core components
 import Dashboard from "views/admin/Dashboard.js";
+import Dashboard_table from "views/admin/Dashboard_table.js";
 //import Icons from "views/admin/Icons.js";
 import Login from "views/auth/Login.js";
 //import Maps from "views/admin/Maps.js";
@@ -19,12 +20,14 @@ import Tv from "@material-ui/icons/Tv";
 import VpnKey from "@material-ui/icons/VpnKey";
 
 var routes = [
+  /*
   {
     href: "#pablo",
     name: "Upgrade to pro",
     icon: FlashOn,
     upgradeToPro: true,
   },
+  */
   {
     path: "/index",
     name: "Dashboard",
@@ -33,14 +36,16 @@ var routes = [
     component: Dashboard,
     layout: "/admin",
   },
-  /*{
+  {
     path: "/icons",
-    name: "Icons",
-    icon: Grain,
-    iconColor: "Primary",
-    component: Icons,
+    name: "Back-end for Saul",
+    //icon: Grain,
+    icon: Tv,
+    iconColor: "Secondary",
+    //component: Icons,
+    component: Dashboard_table,
     layout: "/admin",
-  },
+  },/*
   {
     path: "/maps",
     name: "Maps",
@@ -98,12 +103,12 @@ var routes = [
       "https://www.creative-tim.com/learning-lab/material-ui/colors/argon-dashboard?ref=admui-admin-sidebar",
     name: "Foundation",
     icon: Palette,
-  },*/
+  },
   {
     href:
       "https://www.creative-tim.com/learning-lab/material-ui/alerts/argon-dashboard?ref=admui-admin-sidebar",
     name: "by Abel with Argon",
     icon: Dns,
-  },
+  },*/
 ];
 export default routes;

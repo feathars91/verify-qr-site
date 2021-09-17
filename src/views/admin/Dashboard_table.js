@@ -31,6 +31,9 @@ import Tbl from "./Table3.js";
 //import Tbl2 from './Tableadmin.js'
 
 // core components
+import Header2 from "components/Headers/Header2.js";
+
+
 import Header from "components/Headers/Header.js";
 
 import {
@@ -78,7 +81,7 @@ function Dashboard() {
 
   return (
     <>
-      <Header />
+      <Header2 />
       {/* Page content */}
       <Container
         maxWidth={false}
@@ -96,9 +99,9 @@ function Dashboard() {
             classes={{ root: classes.gridItemRoot }}
           >
 
-              <Tbl passDataToParent={doSomethingWithDataFromChild} />
 
-{isOpened &&  <QR />}
+
+<Tbl2 />
 
 
              

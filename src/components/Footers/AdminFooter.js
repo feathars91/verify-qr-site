@@ -30,11 +30,11 @@ const Footer = () => {
             © {new Date().getFullYear()}{" "}
             <a
               className={classes.copyrightLink}
-              href="https://www.creative-tim.com?ref=adr-admin-footer"
+              href="https://www.linkedin.com/in/abelchinchilla/"
               rel="noopener noreferrer"
               target="_blank"
             >
-              Creative Tim
+              Feather
             </a>
           </div>
         </Box>
@@ -53,41 +53,6 @@ const Footer = () => {
             alignItems="center"
             className={classes.flexDirectionColumn}
           >
-            <ListItem
-              component="a"
-              href="https://www.creative-tim.com?ref=adr-admin-footer"
-              rel="noopener noreferrer"
-              target="_blank"
-              classes={{
-                root: classes.listItemRoot,
-              }}
-            >
-              Creative Tim
-            </ListItem>
-
-            <ListItem
-              component="a"
-              href="https://www.creative-tim.com/presentation?ref=adr-admin-footer"
-              rel="noopener noreferrer"
-              target="_blank"
-              classes={{
-                root: classes.listItemRoot,
-              }}
-            >
-              About Us
-            </ListItem>
-
-            <ListItem
-              component="a"
-              href="http://blog.creative-tim.com?ref=adr-admin-footer"
-              rel="noopener noreferrer"
-              target="_blank"
-              classes={{
-                root: classes.listItemRoot,
-              }}
-            >
-              Blog
-            </ListItem>
 
             <ListItem
               component="a"

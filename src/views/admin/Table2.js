@@ -49,6 +49,7 @@ export class Tbl extends Component {
     this.$el = $(this.el);
     var editor;
     this.editor = new $.fn.dataTable.Editor({
+      // idSrc: "id",
       table: this.$el,
       //ajax: "https://6ewrylky9f.execute-api.us-east-2.amazonaws.com/dev/getcontacts",
       
@@ -60,20 +61,13 @@ export class Tbl extends Component {
         {
           label: "E-mail:",
           name: "email",
-        },{
-                label: "Images:",
-                name: "files[].id",
-                type: "uploadMany",
-                display: function ( fileId, counter ) {
-                    return '<img src="'+editor.file( 'files', fileId ).web_path+'"/>';
-                },
-                  noFileText: 'No images'
-            }
+        },
       ],
     });
     this.$el.DataTable({
       dom: "Blrtip",
-      data: this.state.users, //option 1
+      //data: this.state.users, //option 1
+       ajax: "https://6ewrylky9f.execute-api.us-east-2.amazonaws.com/dev/getcontacts",
       // data: this.getUsersData1(), //option 2
       columns: [
         { title: "Name", data: "name" },

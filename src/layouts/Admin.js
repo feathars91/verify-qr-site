@@ -66,7 +66,7 @@ const Admin = () => {
           routes={routes}
           logo={{
             innerLink: "/admin/index",
-            imgSrc: require("../assets/img/brand/argon-react.png").default,
+            imgSrc: require("../assets/img/brand/featherlogo.png").default,
             imgAlt: "...",
           }}
           dropdown={<NavbarDropdown />}

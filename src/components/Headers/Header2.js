@@ -21,16 +21,28 @@ import componentStyles from "assets/theme/components/header.js";
 
 const useStyles = makeStyles(componentStyles);
 
-const Header = () => {
+const Header2 = () => {
   const classes = useStyles();
   const theme = useTheme();
   return (
     <>
       <div className={classes.header}>
+        <Container
+          maxWidth={false}
+          component={Box}
+          classes={{ root: classes.containerRoot }}
+        >
+          <div>
+<h1>
 
+This is MYSQL table
+
+</h1>
+          </div>
+        </Container>
       </div>
     </>
   );
 };
 
-export default Header;
+export default Header2;
