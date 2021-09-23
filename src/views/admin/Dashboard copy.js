@@ -20,12 +20,12 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-*/import Typography from "@material-ui/core/Typography";
+*/ import Typography from "@material-ui/core/Typography";
 // @material-ui/icons components
 //import ArrowDownward from "@material-ui/icons/ArrowDownward";
 //import ArrowUpward from "@material-ui/icons/ArrowUpward";
-import Tbl from './Table.js'
-import Tbl2 from './Tableadmin.js'
+import Tbl from "./Table.js";
+import Tbl2 from "./Tableadmin.js";
 // core components
 import Header from "components/Headers/Header.js";
 
@@ -115,10 +115,10 @@ function Dashboard() {
                 classes={{ root: classes.cardHeaderRoot }}
               ></CardHeader>
               <Tbl />
-                        </Card>
+            </Card>
           </Grid>
         </Grid>
-                <Grid container component={Box} marginTop="3rem">
+        <Grid container component={Box} marginTop="3rem">
           <Grid
             item
             xs={12}
@@ -168,8 +168,7 @@ function Dashboard() {
                 }
                 classes={{ root: classes.cardHeaderRoot }}
               ></CardHeader>
-
-                        </Card>
+            </Card>
           </Grid>
         </Grid>
       </Container>

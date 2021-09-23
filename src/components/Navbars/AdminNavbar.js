@@ -50,7 +50,7 @@ export default function AdminNavbar({ brandText }) {
                 </Typography>
               </div>
               <Box display="flex" alignItems="center" width="auto">
-                <Box
+{/*                 <Box
                   display="flex"
                   alignItems="center"
                   width="auto"
@@ -66,7 +66,7 @@ export default function AdminNavbar({ brandText }) {
                       input: classes.searchInput,
                     }}
                   />
-                </Box>
+                </Box> */}
                 <NavbarDropdown />
               </Box>
             </Box>

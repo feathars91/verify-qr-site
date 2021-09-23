@@ -25,6 +25,12 @@ export class QR extends Component {
   render() {
     return (
       <div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      
       <h1>You're all set!</h1>
       
       <img src={image} />

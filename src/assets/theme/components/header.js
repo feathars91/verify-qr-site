@@ -3,8 +3,8 @@ const componentStyles = (theme) => ({
     position: "relative",
     background:
       "linear-gradient(87deg," + theme.palette.info.main + ",#1171ef)",
-    paddingBottom: "8rem",
-    paddingTop: "3rem",
+    paddingBottom: "0rem",
+    paddingTop: "0rem",
     [theme.breakpoints.up("md")]: {
       paddingTop: "8rem",
     },

@@ -24,11 +24,14 @@ import TableRow from "@material-ui/core/TableRow";
 // @material-ui/icons components
 //import ArrowDownward from "@material-ui/icons/ArrowDownward";
 //import ArrowUpward from "@material-ui/icons/ArrowUpward";
-import QR from './qrcode.js'
+import QR from "./qrcode.js";
 import Tbl2 from "./Table.js";
-import Tbl from "./Table3.js";
 
-//import Tbl2 from './Tableadmin.js'
+import Edit_info from "./Edit_Upinfo.js";
+import Edit_up from "./Edit_Upfile_1.js";
+import Edit_up2 from "./Edit_Upfile_2.js";
+
+import Tbl3 from "./Table3.js";
 
 // core components
 import Header from "components/Headers/Header.js";
@@ -44,7 +47,6 @@ import componentStyles from "assets/theme/views/admin/dashboard.js";
 
 const useStyles = makeStyles(componentStyles);
 
-
 function Dashboard() {
   const classes = useStyles();
   //const theme = useTheme();
@@ -53,6 +55,13 @@ function Dashboard() {
   const [val, setVal] = React.useState("hidden");
 
   const [isOpened, setIsOpened] = useState(false);
+  const [Up2isOpened, setUp2isOpened] = useState(true);
+
+  const [Up3isOpened, setUp3isOpened] = useState(false);
+  const [Up4isOpened, setUp4isOpened] = useState(false);
+
+  const [rowId, setRowId] = React.useState("");
+  const [userName, setUserName] = React.useState("");
 
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
@@ -63,18 +72,36 @@ function Dashboard() {
     setChartExample1Data("data" + index);
   };
 
-
-
-
-   function doSomethingWithDataFromChild(data) {
-
-
-    if (data === 'display') {
+  function doSomethingWithDataFromInfo(data) {
+    if (typeof data !== "undefined") {
       setIsOpened(true);
+      setUp2isOpened(false);
+      setRowId(data);
     }
+  }
 
-   }
+  function getName(data) {
+    if (typeof data !== "undefined") {
+      setUserName(data);
+    }
+  }
 
+  function doSomethingWithDataFrom2ndchild(data) {
+    if (data === "display3") {
+      setUp3isOpened(true);
+      setIsOpened(false);
+      setUp2isOpened(false);
+    }
+  }
+
+  function doSomethingWithDataFrom3ndchild(data) {
+    if (data === "display4") {
+      setUp3isOpened(false);
+      setIsOpened(false);
+      setUp2isOpened(false);
+      setUp4isOpened(true);
+    }
+  }
 
   return (
     <>
@@ -86,26 +113,50 @@ function Dashboard() {
         marginTop="-6rem"
         classes={{ root: classes.containerRoot }}
       >
+              <Grid container component={Box} marginTop="3rem">
+          <Grid>
+          </Grid>
+          </Grid>
         <Grid container component={Box} marginTop="3rem">
           <Grid
             item
-            xs={12}
+            xs={4}
+            xl={6}
+            component={Box}
+            marginBottom="3rem!important"
+            classes={{ root: classes.gridItemRoot }}
+          ></Grid>
+
+          <Grid
+            item
+            xs={8}
             xl={12}
             component={Box}
             marginBottom="3rem!important"
             classes={{ root: classes.gridItemRoot }}
           >
+            {Up2isOpened && (
+              <Edit_info
+                passDataToParent={doSomethingWithDataFromInfo}
+                passname={getName}
+              />
+            )}
 
-              <Tbl passDataToParent={doSomethingWithDataFromChild} />
+            {isOpened && (
+              <Edit_up
+                rowid={rowId}
+                passDataToParent={doSomethingWithDataFrom2ndchild}
+              />
+            )}
 
-{isOpened &&  <QR />}
+            {Up3isOpened && (
+              <Edit_up2
+                passDataToParent={doSomethingWithDataFrom3ndchild}
+                name={userName}
+              />
+            )}
 
-
-             
-
-              
-
-
+            {Up4isOpened && <QR name={userName} />}
           </Grid>
         </Grid>
       </Container>

@@ -26,7 +26,6 @@ import TableRow from "@material-ui/core/TableRow";
 //import ArrowUpward from "@material-ui/icons/ArrowUpward";
 import QR from './qrcode.js'
 import Tbl2 from "./Table.js";
-import Tbl from "./Table3.js";
 
 //import Tbl2 from './Tableadmin.js'
 
