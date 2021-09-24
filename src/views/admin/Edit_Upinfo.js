@@ -15,16 +15,36 @@ export class Edit_info extends Component {
     this.data = null;
     this.openedit = this.openedit.bind(this);
     this.passdt = this.passdt.bind(this);
+     this.checkUser = this.checkUser.bind(this);
   }
 
+    checkUser() {
+   // let user =  Auth.currentAuthenticatedUser();  
+    //alert(user.username)
+}
+
   openedit() {
+
+//checkUser();
+
     this.editor
-      .buttons({
+      .buttons([
+        
+        {
+        label: "Cancel",
+        fn: function () {
+          this.close();
+        }
+      },
+          {
         label: "Save",
         fn: function () {
           this.submit();
-        },
-      })
+        }
+      }
+      
+     ] )
+     
       .create({ title: "Enter your information to register" });
   }
   passdt() {

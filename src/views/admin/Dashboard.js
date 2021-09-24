@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 // javascipt plugin for creating charts
+import $ from "jquery";
 import Chart from "chart.js";
 // react plugin used to create charts
 //import { Bar } from "react-chartjs-2";
@@ -46,7 +47,13 @@ import {
 
 import componentStyles from "assets/theme/views/admin/dashboard.js";
 
+import {API, Auth } from 'aws-amplify';
+
+
+
 const useStyles = makeStyles(componentStyles);
+
+
 
 function Dashboard() {
   const classes = useStyles();
@@ -63,6 +70,27 @@ function Dashboard() {
 
   const [rowId, setRowId] = React.useState("");
   const [userName, setUserName] = React.useState("");
+  const [data, setData] = React.useState("");
+
+    React.useEffect(() => {
+callApi();
+      
+  }, []);
+
+
+async function callApi() {
+  const user = await Auth.currentAuthenticatedUser()
+  const token = user.signInUserSession.idToken.jwtToken
+  const requestData = {
+    headers: {
+      Authorization: token
+    }
+  }
+  const data = await API.get('authapi', '/items', requestData)
+  console.log("data: ", data)
+  setData("Hello " + data.email);
+}
+
 
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
@@ -108,6 +136,7 @@ function Dashboard() {
     <>
       <Header />
       {/* Page content */}
+
       <Container
         maxWidth={false}
         component={Box}
@@ -118,10 +147,8 @@ function Dashboard() {
           <Grid></Grid>
         </Grid>
         <Grid container component={Box} marginTop="3rem">
-          <Grid></Grid>
-        </Grid>
-        <Grid container component={Box} marginTop="3rem">
-          
+          <Grid>
+      <h5>{data}</h5></Grid>
         </Grid>
 
         <Grid container>
@@ -133,11 +160,13 @@ function Dashboard() {
             marginBottom="3rem!important"
             classes={{ root: classes.gridItemRoot }}
           >
+          
             <Card
               classes={{
                 root: classes.cardRoot + " " + classes.cardRootBgGradient,
               }}
             >
+            
               <Grid
                 container
                 component={Box}
@@ -185,4 +214,6 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+//export default Dashboard;
+
+export default Dashboard

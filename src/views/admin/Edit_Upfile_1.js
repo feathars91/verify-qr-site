@@ -19,24 +19,27 @@ export class Edit_up extends Component {
     };
 
     this.changevis = this.changevis.bind(this);
-     this.passdt = this.passdt.bind(this);
+    this.passdt = this.passdt.bind(this);
   }
 
   changevis() {
     this.editor
-      .buttons({
-        label: "Save",
-        fn: function () {
-          this.submit();
-          this.destroy();
-        },
-      })
-      .edit(this.props.rowid,{ title: "Please submit a picture of your Driver's License or ID" });
+      .buttons(
+        {
+          label: "Save",
+          fn: function () {
+            this.submit();
+            this.destroy();
+          },
+        }
+      )
+      .edit(this.props.rowid, {
+        title: "Please submit a picture of your Driver's License or ID",
+      });
   }
 
-    passdt() {
+  passdt() {
     this.props.passDataToParent("display3");
-    
   }
 
   componentDidMount() {
@@ -47,7 +50,7 @@ export class Edit_up extends Component {
       ajax: {
         type: "POST",
         url: "https://hqisfhhzb5.execute-api.us-east-1.amazonaws.com/dev/items",
-                success: function (data) {
+        success: function (data) {
           $("#p").click();
         },
       },
@@ -94,7 +97,7 @@ export class Edit_up extends Component {
         >
           Upload license
         </Button>
-<button id="p" onClick={this.passdt}></button>
+        <button id="p" onClick={this.passdt}></button>
         <div>
           <div data-editor-id={this.props.rowid}>
             <dl>
