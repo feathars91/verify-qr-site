@@ -57,7 +57,7 @@ const useStyles = makeStyles(componentStyles);
 
 function Dashboard() {
   const classes = useStyles();
-  //const theme = useTheme();
+  const theme = useTheme();
   const [activeNav, setActiveNav] = React.useState(1);
   const [chartExample1Data, setChartExample1Data] = React.useState("data1");
   const [val, setVal] = React.useState("hidden");
@@ -147,8 +147,7 @@ async function callApi() {
           <Grid></Grid>
         </Grid>
         <Grid container component={Box} marginTop="3rem">
-          <Grid>
-      <h5>{data}</h5></Grid>
+          <Grid></Grid>
         </Grid>
 
         <Grid container>
@@ -167,6 +166,10 @@ async function callApi() {
               }}
             >
             
+                              <Box component="span" color={theme.palette.gray[400]}>
+                          {data}
+                        </Box>
+
               <Grid
                 container
                 component={Box}
