@@ -7,6 +7,7 @@ import "datatables.net-dt/css/jquery.dataTables.min.css";
 import "datatables.net-editor-dt/css/editor.dataTables.min.css";
 import "datatables.net-select-dt/css/select.dataTables.min.css";
 import "datatables.net-buttons-dt/css/buttons.dataTables.min.css";
+import "./App.css";
 require("datatables.net");
 require("datatables.net-buttons");
 require("datatables.net-buttons/js/buttons.print.min.js");
@@ -27,6 +28,8 @@ export class Edit_info extends Component {
   }
 
   changevis() {
+
+
     this.editor
       .buttons({
         label: "Save",
@@ -93,7 +96,7 @@ export class Edit_info extends Component {
         >
           Enter information
         </Button>
-        <button id="p"  onClick={this.passdt}></button>
+        <button id="p" onClick={this.passdt}></button>
         <div>
           <h1 id="name"></h1>
           <h1 id="zip"></h1>
@@ -101,12 +104,14 @@ export class Edit_info extends Component {
           <h1 id="id"></h1>
 
           <h1 id="in"></h1>
-          <dl ref="main">
-            <dt></dt>
-            <dd data-editor-field="first_name"></dd>
-            <dt></dt>
-            <dd data-editor-field="last_name"></dd>
-          </dl>
+          <div id="loo">
+            <dl ref="main">
+              <dt></dt>
+              <dd data-editor-field="first_name"></dd>
+              <dt></dt>
+              <dd data-editor-field="last_name"></dd>
+            </dl>
+          </div>
         </div>
       </div>
     );

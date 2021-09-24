@@ -9,10 +9,11 @@ import { useTheme } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
-//import CardContent from "@material-ui/core/CardContent";
+import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
+
 //import LinearProgress from "@material-ui/core/LinearProgress";
 /*import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -113,50 +114,70 @@ function Dashboard() {
         marginTop="-6rem"
         classes={{ root: classes.containerRoot }}
       >
-              <Grid container component={Box} marginTop="3rem">
-          <Grid>
-          </Grid>
-          </Grid>
         <Grid container component={Box} marginTop="3rem">
-          <Grid
-            item
-            xs={4}
-            xl={6}
-            component={Box}
-            marginBottom="3rem!important"
-            classes={{ root: classes.gridItemRoot }}
-          ></Grid>
+          <Grid></Grid>
+        </Grid>
+        <Grid container component={Box} marginTop="3rem">
+          <Grid></Grid>
+        </Grid>
+        <Grid container component={Box} marginTop="3rem">
+          
+        </Grid>
 
+        <Grid container>
           <Grid
             item
-            xs={8}
+            xs={12}
             xl={12}
             component={Box}
             marginBottom="3rem!important"
             classes={{ root: classes.gridItemRoot }}
           >
-            {Up2isOpened && (
-              <Edit_info
-                passDataToParent={doSomethingWithDataFromInfo}
-                passname={getName}
-              />
-            )}
-
-            {isOpened && (
-              <Edit_up
-                rowid={rowId}
-                passDataToParent={doSomethingWithDataFrom2ndchild}
-              />
-            )}
-
-            {Up3isOpened && (
-              <Edit_up2
-                passDataToParent={doSomethingWithDataFrom3ndchild}
-                name={userName}
-              />
-            )}
-
-            {Up4isOpened && <QR name={userName} />}
+            <Card
+              classes={{
+                root: classes.cardRoot + " " + classes.cardRootBgGradient,
+              }}
+            >
+              <Grid
+                container
+                component={Box}
+                marginTop="3rem"
+                spacing={0}
+                direction="column"
+                alignItems="center"
+                justify="center"
+                style={{ minHeight: "50vh" }}
+              >
+                <Grid
+                  item
+                  xs={12}
+                  xl={12}
+                  component={Box}
+                  marginBottom="3rem!important"
+                  classes={{ root: classes.gridItemRoot }}
+                >
+                  {Up2isOpened && (
+                    <Edit_info
+                      passDataToParent={doSomethingWithDataFromInfo}
+                      passname={getName}
+                    />
+                  )}
+                  {isOpened && (
+                    <Edit_up
+                      rowid={rowId}
+                      passDataToParent={doSomethingWithDataFrom2ndchild}
+                    />
+                  )}
+                  {Up3isOpened && (
+                    <Edit_up2
+                      passDataToParent={doSomethingWithDataFrom3ndchild}
+                      name={userName}
+                    />
+                  )}
+                  {Up4isOpened && <QR name={userName} />}
+                </Grid>
+              </Grid>
+            </Card>
           </Grid>
         </Grid>
       </Container>
