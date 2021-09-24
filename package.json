@@ -43,7 +43,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postinstall": "node node_modules/datatables.net-editor/install.js ./public/Editor-1.9.6.zip && node_modules/datatables.net-editor-bs4/node_modules/datatables.net-editor/install.js C:/Users/china040/Documents/development/verify-qr-site/public/Editor-1.9.6.zip"
+    "postinstall": "node node_modules/datatables.net-editor/install.js ./public/Editor-1.9.6.zip && node node_modules/datatables.net-editor-bs4/node_modules/datatables.net-editor/install.js C:/Users/china040/Documents/development/verify-qr-site/public/Editor-1.9.6.zip"
   },
   "eslintConfig": {
     "extends": [
