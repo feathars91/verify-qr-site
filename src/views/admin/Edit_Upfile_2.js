@@ -3,21 +3,17 @@ import React, { Component } from "react";
 import $ from "jquery";
 import Button from "@material-ui/core/Button";
 
-import "datatables.net-dt/css/jquery.dataTables.min.css";
-import "datatables.net-editor-dt/css/editor.dataTables.min.css";
-import "datatables.net-select-dt/css/select.dataTables.min.css";
-import "datatables.net-buttons-dt/css/buttons.dataTables.min.css";
-require("datatables.net");
-require("datatables.net-buttons");
-require("datatables.net-buttons/js/buttons.print.min.js");
-require("datatables.net-select");
+import bootstrap from "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 require("datatables.net-editor");
+require("datatables.net-editor-bs4");
 
 export class Edit_up2 extends Component {
   constructor(props) {
     super(props);
     this.dataTable = null;
-    this.editor1 = null;
+    this.editor = null;
     this.state = {
       isVisible: true,
     };
@@ -35,7 +31,7 @@ export class Edit_up2 extends Component {
           this.submit();
         },
       })
-      .create();
+      .create({ title: "Please submit a picture of your Passport" });
   }
     passdt() {
     this.props.passDataToParent("display4");

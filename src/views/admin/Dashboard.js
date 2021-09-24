@@ -25,13 +25,13 @@ import TableRow from "@material-ui/core/TableRow";
 // @material-ui/icons components
 //import ArrowDownward from "@material-ui/icons/ArrowDownward";
 //import ArrowUpward from "@material-ui/icons/ArrowUpward";
-import QR from "./qrcode.js";
-import Tbl2 from "./Table.js";
+
 
 import Edit_info from "./Edit_Upinfo.js";
 import Edit_up from "./Edit_Upfile_1.js";
 import Edit_up2 from "./Edit_Upfile_2.js";
-
+import QR from "./qrcode.js";
+import Tbl2 from "./Table.js";
 import Tbl3 from "./Table3.js";
 
 // core components

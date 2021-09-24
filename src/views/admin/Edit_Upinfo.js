@@ -1,35 +1,23 @@
-import "./datatables.css";
 import React, { Component } from "react";
 import $ from "jquery";
 import Button from "@material-ui/core/Button";
 
-import "datatables.net-dt/css/jquery.dataTables.min.css";
-import "datatables.net-editor-dt/css/editor.dataTables.min.css";
-import "datatables.net-select-dt/css/select.dataTables.min.css";
-import "datatables.net-buttons-dt/css/buttons.dataTables.min.css";
-import "./App.css";
-require("datatables.net");
-require("datatables.net-buttons");
-require("datatables.net-buttons/js/buttons.print.min.js");
-require("datatables.net-select");
+import bootstrap from "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 require("datatables.net-editor");
+require("datatables.net-editor-bs4");
 
 export class Edit_info extends Component {
   constructor(props) {
     super(props);
     this.editor = null;
-    this.state = {
-      isVisible: true,
-    };
     this.data = null;
-
-    this.changevis = this.changevis.bind(this);
+    this.openedit = this.openedit.bind(this);
     this.passdt = this.passdt.bind(this);
   }
 
-  changevis() {
-
-
+  openedit() {
     this.editor
       .buttons({
         label: "Save",
@@ -37,14 +25,12 @@ export class Edit_info extends Component {
           this.submit();
         },
       })
-      .create();
+      .create({ title: "Enter your information to register" });
   }
-
   passdt() {
     var x;
     x = $("#id").text();
     this.props.passDataToParent(x);
-
     this.props.passname($("#name").text());
   }
 
@@ -92,7 +78,7 @@ export class Edit_info extends Component {
           variant="contained"
           color="primary"
           size="small"
-          onClick={this.changevis}
+          onClick={this.openedit}
         >
           Enter information
         </Button>
@@ -104,14 +90,6 @@ export class Edit_info extends Component {
           <h1 id="id"></h1>
 
           <h1 id="in"></h1>
-          <div id="loo">
-            <dl ref="main">
-              <dt></dt>
-              <dd data-editor-field="first_name"></dd>
-              <dt></dt>
-              <dd data-editor-field="last_name"></dd>
-            </dl>
-          </div>
         </div>
       </div>
     );

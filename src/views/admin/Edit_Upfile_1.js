@@ -3,21 +3,17 @@ import React, { Component } from "react";
 import $ from "jquery";
 import Button from "@material-ui/core/Button";
 
-import "datatables.net-dt/css/jquery.dataTables.min.css";
-import "datatables.net-editor-dt/css/editor.dataTables.min.css";
-import "datatables.net-select-dt/css/select.dataTables.min.css";
-import "datatables.net-buttons-dt/css/buttons.dataTables.min.css";
-require("datatables.net");
-require("datatables.net-buttons");
-require("datatables.net-buttons/js/buttons.print.min.js");
-require("datatables.net-select");
+import bootstrap from "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 require("datatables.net-editor");
+require("datatables.net-editor-bs4");
 
 export class Edit_up extends Component {
   constructor(props) {
     super(props);
     this.dataTable = null;
-    this.editor1 = null;
+    this.editor = null;
     this.state = {
       isVisible: true,
     };
@@ -32,9 +28,10 @@ export class Edit_up extends Component {
         label: "Save",
         fn: function () {
           this.submit();
+          this.destroy();
         },
       })
-      .edit(this.props.rowid);
+      .edit(this.props.rowid,{ title: "Please submit a picture of your Driver's License or ID" });
   }
 
     passdt() {
