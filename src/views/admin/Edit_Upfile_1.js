@@ -6,8 +6,12 @@ import Button from "@material-ui/core/Button";
 import bootstrap from "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
+
+
 require("datatables.net-editor");
 require("datatables.net-editor-bs4");
+
 
 export class Edit_up extends Component {
   constructor(props) {

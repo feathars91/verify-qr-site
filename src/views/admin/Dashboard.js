@@ -35,6 +35,7 @@ import QR from "./qrcode.js";
 import Tbl2 from "./Table.js";
 import Tbl3 from "./Table3.js";
 
+import "./App.css";
 // core components
 import Header from "components/Headers/Header.js";
 
@@ -72,7 +73,15 @@ function Dashboard() {
   const [userName, setUserName] = React.useState("");
   const [data, setData] = React.useState("");
 
+   function toggleZoomScreen() {
+       document.body.style.zoom = "100%";
+   } 
+
+
+
     React.useEffect(() => {
+      toggleZoomScreen();
+ 
 callApi();
       
   }, []);
