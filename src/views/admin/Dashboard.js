@@ -150,23 +150,15 @@ async function callApi() {
           <Grid></Grid>
         </Grid>
 
-        <Grid container>
-          <Grid
-            item
-            xs={12}
-            xl={12}
-            component={Box}
-            marginBottom="3rem!important"
-            classes={{ root: classes.gridItemRoot }}
-          >
-          
-            <Card
-              classes={{
-                root: classes.cardRoot + " " + classes.cardRootBgGradient,
-              }}
-            >
+       <Grid container component={Box} marginTop="3rem">
+          <Grid></Grid>
+        </Grid>
+        <Grid container component={Box} marginTop="3rem">
+          <Grid></Grid>
+        </Grid>
+
             
-                              <Box component="span" color={theme.palette.gray[400]}>
+                              <Box component="span" color={theme.palette.gray[1000]}>
                           {data}
                         </Box>
 
@@ -209,9 +201,6 @@ async function callApi() {
                   {Up4isOpened && <QR name={userName} />}
                 </Grid>
               </Grid>
-            </Card>
-          </Grid>
-        </Grid>
       </Container>
     </>
   );
