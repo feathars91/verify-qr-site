@@ -86,7 +86,6 @@ function Dashboard() {
   }, []);
 
   function displayqr() {
-    
     setComebackisOpened(false);
     setdispQR(false);
   }
@@ -200,14 +199,21 @@ function Dashboard() {
         <Grid container component={Box} marginTop="3rem">
           <Grid></Grid>
         </Grid>
-
         <Grid container component={Box} marginTop="3rem">
           <Grid></Grid>
         </Grid>
         <Grid container component={Box} marginTop="3rem">
           <Grid></Grid>
         </Grid>
-
+        <Grid container component={Box} marginTop="3rem">
+          <Grid></Grid>
+        </Grid>{" "}
+        <Grid container component={Box} marginTop="3rem">
+          <Grid></Grid>
+        </Grid>{" "}
+        <Grid container component={Box} marginTop="3rem">
+          <Grid></Grid>
+        </Grid>
         <Grid
           container
           component={Box}
@@ -232,8 +238,7 @@ function Dashboard() {
               </Box>
             )}
 
-
-            {ComebackisOpened && (<Comeback />)}
+            {ComebackisOpened && <Comeback />}
 
             {Up2isOpened && (
               <Edit_info
