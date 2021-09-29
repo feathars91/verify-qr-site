@@ -75,7 +75,7 @@ function Dashboard() {
   const [data, setData] = React.useState("");
 
   function toggleZoomScreen() {
-    document.body.style.zoom = "100%";
+    document.body.style.zoom = "80%";
   }
 
   React.useEffect(() => {

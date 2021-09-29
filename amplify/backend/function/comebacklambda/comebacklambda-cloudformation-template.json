@@ -69,7 +69,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-verifyqrsite-dev-105024-deployment",
-          "S3Key": "amplify-builds/comebacklambda-5471642f313633474d66-build.zip"
+          "S3Key": "amplify-builds/comebacklambda-4969554737626d76664f-build.zip"
         }
       }
     },
