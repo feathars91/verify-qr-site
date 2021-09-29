@@ -50,9 +50,10 @@ export class Edit_up2 extends Component {
         },
       },
       fields: [
+        { label: "Email:", name: "email", type:"hidden", def:this.props.email },
                 { label: "Name:", name: "first_name", type:"hidden", def:this.props.name },
-        { label: "Date of Birth:", name: "dob", type:"hidden", def:"1991-01-28" },
-        { label: "Zip Code:", name: "zip", type:"hidden", def:"copyzip" },
+        { label: "Date of Birth:", name: "dob", type:"hidden", def:this.props.dob },
+        { label: "Zip Code:", name: "zip", type:"hidden", def:this.props.zip },
                 { label: "Type:", name: "type", type:"hidden", def:"ID2" },
         {
           label: "Image:",

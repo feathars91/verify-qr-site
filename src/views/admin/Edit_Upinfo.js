@@ -4,9 +4,11 @@ import Button from "@material-ui/core/Button";
 
 import bootstrap from "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import moment from 'moment'
 
 require("datatables.net-editor");
 require("datatables.net-editor-bs4");
+require("moment");
 
 export class Edit_info extends Component {
   constructor(props) {
@@ -15,46 +17,43 @@ export class Edit_info extends Component {
     this.data = null;
     this.openedit = this.openedit.bind(this);
     this.passdt = this.passdt.bind(this);
-     this.checkUser = this.checkUser.bind(this);
   }
 
-    checkUser() {
-   // let user =  Auth.currentAuthenticatedUser();  
-    //alert(user.username)
-}
 
   openedit() {
-
-//checkUser();
-
+    var globalemail = this.props.email;
     this.editor
       .buttons([
-        
         {
-        label: "Cancel",
-        fn: function () {
-          this.close();
-        }
-      },
-          {
-        label: "Save",
-        fn: function () {
-          this.submit();
-        }
-      }
-      
-     ] )
-     
+          label: "Cancel",
+          fn: function () {
+            this.close();
+          },
+        },
+        {
+          label: "Save",
+          fn: function () {
+            this.val( 'email', globalemail )
+            this.submit();
+          },
+        },
+      ])
       .create({ title: "Enter your information to register" });
   }
+
   passdt() {
     var x;
     x = $("#id").text();
     this.props.passDataToParent(x);
     this.props.passname($("#name").text());
+    this.props.passdob($("#dob").text());
+    this.props.passzip($("#zip").text());
+    
   }
 
   componentDidMount() {
+    
+    window.moment = moment;
     $("#p").hide();
     var editor;
     editor = new $.fn.dataTable.Editor({
@@ -77,14 +76,67 @@ export class Edit_info extends Component {
         },
       },
       fields: [
+        { label: "Email:", name: "email", type:"hidden" },
         { label: "Name:", name: "first_name" },
-        { label: "Date of Birth:", name: "dob", type: "datetime" },
+        {
+          label: "Date of Birth:",
+          name: "dob",
+          type: "datetime",
+          displayFormat: "MM-DD-YYYY",
+          wireFormat: "MM-DD-YYYY"
+        },
         { label: "Zip Code:", name: "zip" },
         { label: "Type:", name: "type", type: "hidden", def: "ID1" },
       ],
     });
 
     this.editor = editor;
+
+    this.editor.on("preSubmit", function (e, o, action) {
+      
+      if (action !== "remove") {
+        var firstName = this.field("first_name");
+        var zip = this.field("zip");
+        var dob = this.field("dob");
+
+        // Only validate user input values - different values indicate that
+        // the end user has not entered a value
+        if (!firstName.isMultiValue()) {
+          if (!firstName.val()) {
+            firstName.error("A first name must be given");
+          }
+
+          if (firstName.val().length >= 20) {
+            firstName.error(
+              "The first name length must be less that 20 characters"
+            );
+          }
+        }
+
+        if (!zip.isMultiValue()) {
+          if (!zip.val()) {
+            zip.error("A Zip code must be given");
+          }
+
+          if (zip.val().length != 5) {
+            zip.error("The Zip Code length must be 5 characters");
+          }
+        }
+
+        if (!dob.isMultiValue()) {
+          if (!dob.val()) {
+            dob.error("Please enter a date of birth");
+          }
+        }
+
+        // ... additional validation rules
+
+        // If any error was reported, cancel the submission so it can be corrected
+        if (this.inError()) {
+          return false;
+        }
+      }
+    });
   }
 
   editor = () => {

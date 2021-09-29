@@ -38,6 +38,7 @@ app.use(function (req, res, next) {
  **********************/
 
 app.get("/items", async function (req, res) {
+  
   var db = require("./db");
   var fs = require("fs");
 
@@ -63,9 +64,30 @@ app.get("/items", async function (req, res) {
   var registered;
   var format = req.query.format ? req.query.format : "";
 
+    // Different formats supported for the demo
+    if ( format === 'custom' ) {
+        registered = 'MM-DD-YYYY';
+        
+    }
+    else {
+        registered = 'MM-DD-YYYY';
+    }
+    
   var editor = new Editor(db, "users").fields(
+    new Field("email"),
     new Field("first_name"),
-    new Field("dob"),
+    new Field("dob")
+      .validator(
+        Validate.dateFormat(
+          registered,
+          null,
+          new Validate.Options({
+            message: "Please enter a date in the format " + registered,
+          })
+        )
+      )
+      .getFormatter(Format.sqlDateToFormat(registered))
+      .setFormatter(Format.formatToSqlDate(registered)),
     new Field("zip"),
     new Field("type"),
     new Field("image").setFormatter(Format.ifEmpty(null)).upload(
@@ -80,6 +102,10 @@ app.get("/items", async function (req, res) {
             if (err) {
               throw err;
             }
+            console.debug(path);
+
+            console.debug(path);
+            console.debug(path);
             var base64data = Buffer.from(data, "binary").toString("base64");
 
             s3.putObject(
@@ -129,6 +155,7 @@ app.get("/items", async function (req, res) {
 
   await editor.process(req.body, req.files);
   res.json(editor.data());
+
 });
 
 app.get("/items/*", function (req, res) {
@@ -141,6 +168,7 @@ app.get("/items/*", function (req, res) {
  ****************************/
 
 app.post("/items", async function (req, res) {
+
   var db = require("./db");
   var fs = require("fs");
 
@@ -168,14 +196,15 @@ app.post("/items", async function (req, res) {
 
     // Different formats supported for the demo
     if ( format === 'custom' ) {
-        registered = 'M/D/YYYY';
+        registered = 'MM-DD-YYYY';
         
     }
     else {
-        registered = 'YYYY-MM-DD';
+        registered = 'MM-DD-YYYY';
     }
     
   var editor = new Editor(db, "users").fields(
+    new Field("email"),
     new Field("first_name"),
     new Field("dob")
       .validator(

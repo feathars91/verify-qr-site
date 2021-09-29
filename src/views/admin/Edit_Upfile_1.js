@@ -2,13 +2,8 @@ import "./datatables.css";
 import React, { Component } from "react";
 import $ from "jquery";
 import Button from "@material-ui/core/Button";
-
 import bootstrap from "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-
-
-
 require("datatables.net-editor");
 require("datatables.net-editor-bs4");
 

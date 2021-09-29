@@ -27,13 +27,13 @@ import TableRow from "@material-ui/core/TableRow";
 //import ArrowDownward from "@material-ui/icons/ArrowDownward";
 //import ArrowUpward from "@material-ui/icons/ArrowUpward";
 
-
 import Edit_info from "./Edit_Upinfo.js";
 import Edit_up from "./Edit_Upfile_1.js";
 import Edit_up2 from "./Edit_Upfile_2.js";
 import QR from "./qrcode.js";
 import Tbl2 from "./Table.js";
 import Tbl3 from "./Table3.js";
+import Comeback from "./comeback.js";
 
 import "./App.css";
 // core components
@@ -48,13 +48,9 @@ import {
 
 import componentStyles from "assets/theme/views/admin/dashboard.js";
 
-import {API, Auth } from 'aws-amplify';
-
-
+import { API, Auth } from "aws-amplify";
 
 const useStyles = makeStyles(componentStyles);
-
-
 
 function Dashboard() {
   const classes = useStyles();
@@ -64,42 +60,74 @@ function Dashboard() {
   const [val, setVal] = React.useState("hidden");
 
   const [isOpened, setIsOpened] = useState(false);
-  const [Up2isOpened, setUp2isOpened] = useState(true);
+  const [Up2isOpened, setUp2isOpened] = useState(false);
 
   const [Up3isOpened, setUp3isOpened] = useState(false);
   const [Up4isOpened, setUp4isOpened] = useState(false);
+  const [ComebackisOpened, setComebackisOpened] = useState(false);
+  const [dispQR, setdispQR] = useState(false);
 
   const [rowId, setRowId] = React.useState("");
+  const [userEmail, setUserEmail] = React.useState("");
   const [userName, setUserName] = React.useState("");
+  const [userDob, setUserDob] = React.useState("");
+  const [userZip, setUserZip] = React.useState("");
   const [data, setData] = React.useState("");
 
-   function toggleZoomScreen() {
-       document.body.style.zoom = "100%";
-   } 
+  function toggleZoomScreen() {
+    document.body.style.zoom = "100%";
+  }
 
-
-
-    React.useEffect(() => {
-      toggleZoomScreen();
- 
-callApi();
-      
+  React.useEffect(() => {
+    toggleZoomScreen();
+    callApi();
+    //checkComeback(userEmail);
+    //  $("#p").click();
   }, []);
 
+  function displayqr() {
+    
+    setComebackisOpened(false);
+    setdispQR(false);
+  }
+  async function callApi() {
+    const user = await Auth.currentAuthenticatedUser();
+    const token = user.signInUserSession.idToken.jwtToken;
+    const requestData = {
+      headers: {
+        Authorization: token,
+      },
+    };
+    const data = await API.get("authapi", "/items", requestData);
+    console.log("data: ", data);
+    setUserEmail(data.email);
+    checkComeback(data.email);
+  }
 
-async function callApi() {
-  const user = await Auth.currentAuthenticatedUser()
-  const token = user.signInUserSession.idToken.jwtToken
-  const requestData = {
-    headers: {
-      Authorization: token
+  async function checkComeback(x) {
+    const myInit = {
+      // OPTIONAL
+      queryStringParameters: {
+        // OPTIONAL
+        email: x,
+      },
+    };
+    const data = await API.get("comebackapi", "/items", myInit);
+    console.log("data: ", data);
+    if (data.count === "2") {
+      setUp3isOpened(false);
+      setIsOpened(false);
+      setUp2isOpened(false);
+      setUp4isOpened(false);
+      setComebackisOpened(true);
+    } else {
+      setUp3isOpened(false);
+      setIsOpened(false);
+      setUp2isOpened(true);
+      setUp4isOpened(false);
+      setComebackisOpened(false);
     }
   }
-  const data = await API.get('authapi', '/items', requestData)
-  console.log("data: ", data)
-  setData("Hello " + data.email);
-}
-
 
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
@@ -124,11 +152,24 @@ async function callApi() {
     }
   }
 
+  function getDob(data) {
+    if (typeof data !== "undefined") {
+      setUserDob(data);
+    }
+  }
+
+  function getZip(data) {
+    if (typeof data !== "undefined") {
+      setUserZip(data);
+    }
+  }
+
   function doSomethingWithDataFrom2ndchild(data) {
     if (data === "display3") {
       setUp3isOpened(true);
       setIsOpened(false);
       setUp2isOpened(false);
+      //setComebackisOpened(false);
     }
   }
 
@@ -137,6 +178,7 @@ async function callApi() {
       setUp3isOpened(false);
       setIsOpened(false);
       setUp2isOpened(false);
+      // setComebackisOpened(false);
       setUp4isOpened(true);
     }
   }
@@ -159,57 +201,67 @@ async function callApi() {
           <Grid></Grid>
         </Grid>
 
-       <Grid container component={Box} marginTop="3rem">
+        <Grid container component={Box} marginTop="3rem">
           <Grid></Grid>
         </Grid>
         <Grid container component={Box} marginTop="3rem">
           <Grid></Grid>
         </Grid>
 
-            
-                              <Box component="span" color={theme.palette.gray[1000]}>
-                          {data}
-                        </Box>
+        <Grid
+          container
+          component={Box}
+          marginTop="3rem"
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justify="center"
+          style={{ minHeight: "50vh" }}
+        >
+          <Grid
+            item
+            xs={12}
+            xl={12}
+            component={Box}
+            marginBottom="3rem!important"
+            classes={{ root: classes.gridItemRoot }}
+          >
+            {ComebackisOpened && (
+              <Box component="span" color={theme.palette.gray[1000]}>
+                Welcome Back {userEmail}
+              </Box>
+            )}
 
-              <Grid
-                container
-                component={Box}
-                marginTop="3rem"
-                spacing={0}
-                direction="column"
-                alignItems="center"
-                justify="center"
-                style={{ minHeight: "50vh" }}
-              >
-                <Grid
-                  item
-                  xs={12}
-                  xl={12}
-                  component={Box}
-                  marginBottom="3rem!important"
-                  classes={{ root: classes.gridItemRoot }}
-                >
-                  {Up2isOpened && (
-                    <Edit_info
-                      passDataToParent={doSomethingWithDataFromInfo}
-                      passname={getName}
-                    />
-                  )}
-                  {isOpened && (
-                    <Edit_up
-                      rowid={rowId}
-                      passDataToParent={doSomethingWithDataFrom2ndchild}
-                    />
-                  )}
-                  {Up3isOpened && (
-                    <Edit_up2
-                      passDataToParent={doSomethingWithDataFrom3ndchild}
-                      name={userName}
-                    />
-                  )}
-                  {Up4isOpened && <QR name={userName} />}
-                </Grid>
-              </Grid>
+
+            {ComebackisOpened && (<Comeback />)}
+
+            {Up2isOpened && (
+              <Edit_info
+                passDataToParent={doSomethingWithDataFromInfo}
+                email={userEmail}
+                passname={getName}
+                passdob={getDob}
+                passzip={getZip}
+              />
+            )}
+            {isOpened && (
+              <Edit_up
+                rowid={rowId}
+                passDataToParent={doSomethingWithDataFrom2ndchild}
+              />
+            )}
+            {Up3isOpened && (
+              <Edit_up2
+                passDataToParent={doSomethingWithDataFrom3ndchild}
+                name={userName}
+                dob={userDob}
+                zip={userZip}
+                email={userEmail}
+              />
+            )}
+            {Up4isOpened && <QR name={userName} />}
+          </Grid>
+        </Grid>
       </Container>
     </>
   );
@@ -217,4 +269,4 @@ async function callApi() {
 
 //export default Dashboard;
 
-export default Dashboard
+export default Dashboard;

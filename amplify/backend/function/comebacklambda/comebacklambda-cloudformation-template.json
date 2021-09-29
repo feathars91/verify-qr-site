@@ -33,12 +33,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "verilambda",
+            "comebacklambda",
             {
               "Fn::Join": [
                 "",
                 [
-                  "verilambda",
+                  "comebacklambda",
                   "-",
                   {
                     "Ref": "env"
@@ -69,7 +69,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-verifyqrsite-dev-105024-deployment",
-          "S3Key": "amplify-builds/verilambda-353169584e624a4e4358-build.zip"
+          "S3Key": "amplify-builds/comebacklambda-5471642f313633474d66-build.zip"
         }
       }
     },
@@ -79,12 +79,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "verifyqrsiteLambdaRole80f8fc14",
+            "verifyqrsiteLambdaRolea7fe4d80",
             {
               "Fn::Join": [
                 "",
                 [
-                  "verifyqrsiteLambdaRole80f8fc14",
+                  "verifyqrsiteLambdaRolea7fe4d80",
                   "-",
                   {
                     "Ref": "env"

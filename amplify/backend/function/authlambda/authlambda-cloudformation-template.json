@@ -69,7 +69,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-verifyqrsite-dev-105024-deployment",
-          "S3Key": "amplify-builds/authlambda-5645434b452f372b3479-build.zip"
+          "S3Key": "amplify-builds/authlambda-517357716d383243316e-build.zip"
         }
       }
     },
