@@ -23,8 +23,12 @@ export class Comeback extends Component {
   }
 
  show(){
-   $("#l").show();
+   alert("boo");
+   
+    this.props.passDataToParent("DisplayQR");
  }
+
+
 
   componentDidMount() {
     //$("#l").hide();
@@ -32,21 +36,19 @@ export class Comeback extends Component {
   
   render() {
     return (
-      <div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-     
-      <div id="l">
-      <h1>You're all set!</h1>
-      
-      <img src={image} />
-      <h1>Here's your digital vaccine pass.</h1>
-</div>
-      </div>
-      
+
+
+
+        <Button
+          variant="contained"
+          color="primary"
+          size="small"
+          onClick={this.show}
+        >
+          Display Pass
+        </Button>
+
+
     );
   }
 }

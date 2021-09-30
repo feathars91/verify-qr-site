@@ -182,6 +182,13 @@ function Dashboard() {
     }
   }
 
+  
+ function doSomethingWithDataFromComeback(data) {
+    if (data === "DisplayQR") {
+       setComebackisOpened(false);
+      setUp4isOpened(true);
+    }
+  }
   return (
     <>
       <Header />
@@ -199,6 +206,7 @@ function Dashboard() {
         <Grid container component={Box} marginTop="3rem">
           <Grid></Grid>
         </Grid>
+
         <Grid
           container
           component={Box}
@@ -209,21 +217,13 @@ function Dashboard() {
           justify="center"
           style={{ minHeight: "50vh" }}
         >
-          <Grid
-            item
-            xs={12}
-            xl={12}
-            component={Box}
-            marginBottom="3rem!important"
-            classes={{ root: classes.gridItemRoot }}
-          >
             {ComebackisOpened && (
-              <Box component="span" color={theme.palette.gray[1000]}>
+              <Box component="span" color={theme.palette.gray[10000]}>
                 Welcome Back {userEmail}
               </Box>
             )}
 
-            {ComebackisOpened && <Comeback />}
+            {ComebackisOpened && <Comeback passDataToParent={doSomethingWithDataFromComeback}/>}
 
             {Up2isOpened && (
               <Edit_info
@@ -249,8 +249,10 @@ function Dashboard() {
                 email={userEmail}
               />
             )}
-            {Up4isOpened && <QR name={userName} />}
-          </Grid>
+            {Up4isOpened &&
+
+             <QR name={userName} />}
+       
         </Grid>
       </Container>
     </>
