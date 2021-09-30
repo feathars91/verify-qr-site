@@ -217,13 +217,8 @@ function Dashboard() {
           justify="center"
           style={{ minHeight: "50vh" }}
         >
-            {ComebackisOpened && (
-              <Box component="span" color={theme.palette.gray[10000]}>
-                Welcome Back {userEmail}
-              </Box>
-            )}
-
-            {ComebackisOpened && <Comeback passDataToParent={doSomethingWithDataFromComeback}/>}
+        
+            {ComebackisOpened && <Comeback passDataToParent={doSomethingWithDataFromComeback} userEmail={userEmail} />}
 
             {Up2isOpened && (
               <Edit_info
