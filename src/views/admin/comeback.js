@@ -1,22 +1,13 @@
 import "./datatables.css";
 import React, { Component } from "react";
 import $ from "jquery";
-import "datatables.net-dt/css/jquery.dataTables.min.css";
-import "datatables.net-editor-dt/css/editor.dataTables.min.css";
-import "datatables.net-select-dt/css/select.dataTables.min.css";
-import "datatables.net-buttons-dt/css/buttons.dataTables.min.css";
-import image from "./qr-code-standard-example.png";
-import Button from "@material-ui/core/Button";
+/* import image from "./qr-code-standard-example.png";
+
 
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-require("datatables.net");
-require("datatables.net-buttons");
-require("datatables.net-buttons/js/buttons.print.min.js");
-require("datatables.net-select");
-require("datatables.net-editor");
-
+import Grid from "@material-ui/core/Grid"; */
+import Button from "@material-ui/core/Button";
 export class Comeback extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +25,7 @@ export class Comeback extends Component {
 
   render() {
     return (
-      <Container maxWidth={false} component={Box} marginTop="-6rem">
+/*       <Container maxWidth={false} component={Box} marginTop="-6rem">
         <Grid
           container
           component={Box}
@@ -60,7 +51,15 @@ export class Comeback extends Component {
             Display Pass
           </Button>
         </Grid>
-      </Container>
+      </Container> */
+                <Button
+            variant="contained"
+            color="primary"
+            size="medium"
+            onClick={this.show}
+          >
+            Display Pass
+          </Button>
     );
   }
 }

@@ -38,7 +38,7 @@ var routes = [
   },
   {
     path: "/backend",
-    name: "Back-end",
+    name: "Backend",
     //icon: Grain,
     icon: Tv,
     iconColor: "Secondary",

@@ -33,6 +33,7 @@ export default function NavbarDropdown() {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+
   };
 
   const menuId = "primary-search-account-menu";
@@ -53,7 +54,7 @@ export default function NavbarDropdown() {
       >
         Welcome!
       </Typography>
-      <Box
+{/*       <Box
         display="flex!important"
         alignItems="center!important"
         component={MenuItem}
@@ -66,8 +67,8 @@ export default function NavbarDropdown() {
           marginRight="1rem"
         />
         <span>My profile</span>
-      </Box>
-      <Box
+      </Box> */}
+{/*       <Box
         display="flex!important"
         alignItems="center!important"
         component={MenuItem}
@@ -108,7 +109,7 @@ export default function NavbarDropdown() {
           marginRight="1rem"
         />
         <span>Support</span>
-      </Box>
+      </Box> */}
       <Divider component="div" classes={{ root: classes.dividerRoot }} />
       <Box
         display="flex!important"
@@ -116,13 +117,7 @@ export default function NavbarDropdown() {
         component={MenuItem}
         onClick={handleMenuClose}
       >
-        <Box
-          component={DirectionsRun}
-          width="1.25rem!important"
-          height="1.25rem!important"
-          marginRight="1rem"
-        />
-        <span>Logout</span>
+        <amplify-sign-out button-text="Logout"></amplify-sign-out>
       </Box>
     </Menu>
   );
