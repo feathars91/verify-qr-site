@@ -35,13 +35,21 @@ export class QR extends Component {
           justify="center"
           style={{ minHeight: "50vh" }}
         >
+          <Grid container component={Box} marginTop="3rem">
+            <Grid></Grid>
+          </Grid>
+          <Grid container component={Box} marginTop="3rem">
+            <Grid></Grid>
+          </Grid>
           <Box component="span" fontSize="25px" fontWeight="400">
             You're all set!
           </Box>
-          
+
           <img src={image} />
 
-          <Box component="span" fontSize="20px" fontWeight="400">Here's your digital vaccine pass.</Box>
+          <Box component="span" fontSize="20px" fontWeight="400">
+            Here's your digital vaccine pass.
+          </Box>
         </Grid>
       </Container>
     );
