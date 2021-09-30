@@ -19,6 +19,7 @@ export class Tbl extends Component {
     this.editor = null;
   }
 
+
   componentDidMount() {
     this.$el = $(this.el);
     var editor;
@@ -26,15 +27,15 @@ export class Tbl extends Component {
       ajax: {
         create: {
           type: "POST",
-          url: "https://hqisfhhzb5.execute-api.us-east-1.amazonaws.com/dev/items",
+          url: "https://wd1jsqwqrk.execute-api.us-east-2.amazonaws.com/dev/items",
         },
         edit: {
           type: "POST",
-          url: "https://hqisfhhzb5.execute-api.us-east-1.amazonaws.com/dev/items",
+          url: "https://wd1jsqwqrk.execute-api.us-east-2.amazonaws.com/dev/items",
         },
         remove: {
           type: "POST",
-          url: "https://hqisfhhzb5.execute-api.us-east-1.amazonaws.com/dev/items",
+          url: "https://wd1jsqwqrk.execute-api.us-east-2.amazonaws.com/dev/items",
         },
       },
       table: this.$el,
@@ -59,8 +60,8 @@ export class Tbl extends Component {
           clearText: "Clear",
           noImageText: "No image",
           ajax: {
-            type: "POST",
-            url: "https://hqisfhhzb5.execute-api.us-east-1.amazonaws.com/dev/items",
+          type: "POST",
+          url: "https://wd1jsqwqrk.execute-api.us-east-2.amazonaws.com/dev/items",
           },
         },
       ],
@@ -68,11 +69,28 @@ export class Tbl extends Component {
     this.editor = editor;
     this.dataTable = this.$el.DataTable({
       dom: "Blrtip",
-      ajax: "https://hqisfhhzb5.execute-api.us-east-1.amazonaws.com/dev/items",
+      ajax: "https://wd1jsqwqrk.execute-api.us-east-2.amazonaws.com/dev/items",
       columns: [
         { title: "Name", data: "first_name" },
-        { title: "E-mail", data: "email" },
-        //{ title: "Zip Code", data: "zip" },
+        { title: "Birth Date", data: "last_name" },
+        { title: "Zip Code", data: "zip" },
+        {
+          data: "image",
+          render: function (file_id) {
+            try {
+              return (
+                '<img src="https://datatables-editor.s3.us-east-2.amazonaws.com/' +
+                editor.file("files", file_id).filename +
+                '"/>'
+              );
+              //return '<img src="https://datatables-editor.s3.us-east-2.amazonaws.com/cat1.jpg"/>';
+            } catch (e) {
+              console.debug(e);
+            }
+          },
+          defaultContent: "No image",
+          title: "Image",
+        },
       ],
       select: {
         style: "os",
@@ -107,9 +125,10 @@ export class Tbl extends Component {
     return this.editor;
   };
 
+
   render() {
     return (
-      <div>
+      <div   >
         <table
           className="display"
           width="100%"

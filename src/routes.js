@@ -37,8 +37,8 @@ var routes = [
     layout: "/admin",
   },
   {
-    path: "/icons",
-    name: "Back-end for Saul",
+    path: "/backend",
+    name: "Back-end",
     //icon: Grain,
     icon: Tv,
     iconColor: "Secondary",

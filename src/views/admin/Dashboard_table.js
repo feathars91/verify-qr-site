@@ -80,7 +80,7 @@ function Dashboard() {
 
   return (
     <>
-      <Header2 />
+    
       {/* Page content */}
       <Container
         maxWidth={false}
@@ -98,7 +98,11 @@ function Dashboard() {
             classes={{ root: classes.gridItemRoot }}
           >
 
-
+        <Grid container component={Box} marginTop="3rem">
+          <Grid></Grid>
+        </Grid>        <Grid container component={Box} marginTop="3rem">
+          <Grid></Grid>
+        </Grid>
 
 <Tbl2 />
 
