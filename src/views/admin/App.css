@@ -1,15 +1,29 @@
 .DTE_Action_Create  {
-    top: 52px;
-  }
+  top: 52px;
+}
 
-  .close  {
-    visibility: hidden;
-  }
+.close  {
+  visibility: hidden;
+}
 
-  .DTE_Action_Edit  {
-    top: 52px;
-  }
+.DTE_Action_Edit  {
+  top: 52px;
+}
 
-  .close  {
-    visibility: hidden;
-  }
+.close  {
+  visibility: hidden;
+}
+
+
+.modal-backdrop {
+  z-index: -1;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom:0;
+  width: auto !important;
+  z-index: 40;
+  height: 1000vh;
+  
+}

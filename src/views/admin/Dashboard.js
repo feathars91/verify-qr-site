@@ -87,7 +87,7 @@ function Dashboard() {
 
   function displayqr() {
     setComebackisOpened(false);
-    setdispQR(false);
+    setdispQR(true);
   }
   async function callApi() {
     const user = await Auth.currentAuthenticatedUser();
