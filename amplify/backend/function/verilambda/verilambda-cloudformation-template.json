@@ -69,7 +69,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-verifyqrsite-dev-105024-deployment",
-          "S3Key": "amplify-builds/verilambda-353169584e624a4e4358-build.zip"
+          "S3Key": "amplify-builds/verilambda-33313557446b71303957-build.zip"
         }
       }
     },
