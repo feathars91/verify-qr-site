@@ -113,7 +113,7 @@ function Dashboard() {
     };
     const data = await API.get("comebackapi", "/items", myInit);
     console.log("data: ", data);
-    if (data.count === "2") {
+    if (data.count >= "2") {
       setUp3isOpened(false);
       setIsOpened(false);
       setUp2isOpened(false);
