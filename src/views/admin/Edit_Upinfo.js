@@ -149,7 +149,7 @@ export class Edit_info extends Component {
         <Button
           variant="contained"
           color="primary"
-          size="small"
+          size="large"
           onClick={this.openedit}
         >
           Enter information

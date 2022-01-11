@@ -3,10 +3,10 @@ let dbConfig = {
 	client: 'mysql',
 
 	connection: {
-		user: '1hgFV788Nj',
-		password: 'Ome5S6Rz8J',
-		database: '1hgFV788Nj',
-		host: 'remotemysql.com',
+		user: 'sql3464813',
+		password: 'ls1vpU1S2A',
+		database: 'sql3464813',
+		host: 'sql3.freesqldatabase.com',
 		filename: '', // Only used for SQLite
 		dateStrings: true
 	}

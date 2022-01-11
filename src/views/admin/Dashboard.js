@@ -112,8 +112,8 @@ function Dashboard() {
       },
     };
     const data = await API.get("comebackapi", "/items", myInit);
-    console.log("data: ", data);
-    if (data.count >= "2") {
+    console.log("datafff: ", data);
+    if (data.count >= 2) {
       setUp3isOpened(false);
       setIsOpened(false);
       setUp2isOpened(false);
@@ -182,10 +182,9 @@ function Dashboard() {
     }
   }
 
-  
- function doSomethingWithDataFromComeback(data) {
+  function doSomethingWithDataFromComeback(data) {
     if (data === "DisplayQR") {
-       setComebackisOpened(false);
+      setComebackisOpened(false);
       setUp4isOpened(true);
     }
   }
@@ -217,7 +216,7 @@ function Dashboard() {
           justify="center"
           style={{ minHeight: "50vh" }}
         >
-                  <Grid
+          <Grid
             item
             xs={12}
             xl={12}
@@ -225,7 +224,12 @@ function Dashboard() {
             marginBottom="3rem!important"
             classes={{ root: classes.gridItemRoot }}
           >
-            {ComebackisOpened && <Comeback passDataToParent={doSomethingWithDataFromComeback} userEmail={userEmail} />}
+            {ComebackisOpened && (
+              <Comeback
+                passDataToParent={doSomethingWithDataFromComeback}
+                userEmail={userEmail}
+              />
+            )}
 
             {Up2isOpened && (
               <Edit_info
@@ -251,10 +255,8 @@ function Dashboard() {
                 email={userEmail}
               />
             )}
-            {Up4isOpened &&
-
-             <QR name={userName} />}
-       </Grid>
+            {Up4isOpened && <QR name={userName} />}
+          </Grid>
         </Grid>
       </Container>
     </>

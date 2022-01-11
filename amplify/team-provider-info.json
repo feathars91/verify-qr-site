@@ -12,14 +12,28 @@
       "AmplifyAppId": "dtkxb0wm4c9pi"
     },
     "categories": {
-      "auth": {
-        "verifyqrsite388b96f0": {}
+      "function": {
+        "verilambda": {
+          "deploymentBucketName": "amplify-verifyqrsite-dev-105024-deployment",
+          "s3Key": "amplify-builds/verilambda-58755633476b61423567-build.zip"
+        },
+        "authlambda": {
+          "deploymentBucketName": "amplify-verifyqrsite-dev-105024-deployment",
+          "s3Key": "amplify-builds/authlambda-78616273727974743353-build.zip"
+        },
+        "comebacklambda": {
+          "deploymentBucketName": "amplify-verifyqrsite-dev-105024-deployment",
+          "s3Key": "amplify-builds/comebacklambda-7577534b672b5530764e-build.zip"
+        }
       },
       "hosting": {
         "amplifyhosting": {
           "appId": "dtkxb0wm4c9pi",
           "type": "cicd"
         }
+      },
+      "auth": {
+        "verifyqrsite388b96f0": {}
       }
     }
   }
